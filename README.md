@@ -1,11 +1,12 @@
 <!-- reeadme.md -->
 
-#test
+##GitとGithub
+***
+初めて使ったけど楽しいね
 
-# chapter01
+##基本編
+---
 
-## chapter01
 
-##chapter02
-
-##chapter03
+##応用編
+---
