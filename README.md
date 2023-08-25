@@ -6,7 +6,7 @@
 
 ##基本編
 ---
-<font color = "Red">addしてcommitしてpushすればいいんよ<font>
+<font color = "Red">addしてcommitしてpushすればいいんよ</font>
 
 
 ##応用編
