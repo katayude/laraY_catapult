@@ -43,10 +43,18 @@ class FollowController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+    // ターゲットユーザのデータ
+    $user = User::find($id);
+    // ターゲットユーザのフォロワー一覧
+    $followers = $user->followers;
+    // ターゲットユーザのフォローしている人一覧
+    $followings  = $user->followings;
+
+    return response()->view('user.show', compact('user', 'followers', 'followings'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
