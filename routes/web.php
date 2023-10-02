@@ -6,6 +6,7 @@ use App\Http\Controllers\TweetController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\BookmarkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
   Route::get('/tweet/mypage', [TweetController::class, 'mydata'])->name('tweet.mypage');
   Route::resource('tweet', TweetController::class);
+  Route::post('tweet/{tweet}/bookmark', [BookmarkController::class, 'store'])->name('bookmark');
+  Route::post('tweet/{tweet}/unbookmark', [BookmarkController::class, 'destroy'])->name('unbookmark');
 });
 
 Route::get('/', function () {
