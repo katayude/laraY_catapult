@@ -32,4 +32,11 @@ class Tweet extends Model
   {
     return $this->belongsToMany(User::class)->withTimestamps();
   }
+    public function bookmark(){
+    return $this->belongsToMany(User::class, 'bookmark', 'tweet_id', 'user_id')->withTimestamps();
+    }
+
+    public function unbookmark(){
+    return $this->belongsToMany(User::class, 'bookmark','user_id', 'tweet_id')->withTimestamps();
+    }
 }

@@ -80,6 +80,33 @@
                       </x-primary-button>
                     </form>
                     @endif
+
+                    <!-- bookmark 状態で条件分岐 -->
+                    @if($tweet->bookmark()->where('user_id', Auth::id())->exists())
+                    <!-- unbookmark ボタン -->
+                    <form action="{{ route('unbookmark',$tweet) }}" method="POST" class="text-left">
+                      @csrf
+                      <x-primary-button class="ml-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        {{ $tweet->bookmark()->count() }}
+                      </x-primary-button>
+                    </form>
+                    @else
+                    <!-- bookmark ボタン -->
+                    <form action="{{ route('bookmark',$tweet) }}" method="POST" class="text-left">
+                      @csrf
+                      <x-primary-button class="ml-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        {{ $tweet->unbookmark()->count() }}
+                      </x-primary-button>
+                    </form>
+
+
+                    @endif
                     <!-- 条件分岐でログインしているユーザが投稿したtweetのみ編集ボタンと削除ボタンが表示される -->
                     @if ($tweet->user_id === Auth::user()->id)
                     <!-- 更新ボタン -->
